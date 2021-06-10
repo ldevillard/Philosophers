@@ -6,7 +6,7 @@
 /*   By: ldevilla <ldevilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 09:56:20 by ldevilla          #+#    #+#             */
-/*   Updated: 2021/06/10 10:43:58 by ldevilla         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:35:51 by ldevilla         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ static char	*get_message(int type)
 
 void	display_message(t_philo *philo, int type)
 {
-	static int	done = 0;
+	static bool	died = false;
 
 	pthread_mutex_lock(&philo->info->mutex_display);
-	if (!done)
+	if (!died)
 	{
+		if (type == OVER)
+			died = true;
 		write(1, "[", 1);
 		ft_putnbr_fd(get_time() - philo->info->start, 1);
 		write(1, "]", 1);
@@ -41,7 +43,7 @@ void	display_message(t_philo *philo, int type)
 		if (type != OVER)
 			ft_putnbr_fd(philo->position + 1, 1);
 		if (type >= DIED)
-			done = 1;
+			died = true;
 		write(1, get_message(type), ft_strlen(get_message(type)));
 	}
 	pthread_mutex_unlock(&philo->info->mutex_display);

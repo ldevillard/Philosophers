@@ -6,19 +6,19 @@
 /*   By: ldevilla <ldevilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 10:49:26 by ldevilla          #+#    #+#             */
-/*   Updated: 2021/06/10 10:50:44 by ldevilla         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:18:50 by ldevilla         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	*eat_counter(void *state_v)
+void	*eat_counter(void *arg)
 {
 	t_info	*info;
 	int		i;
 	int		total;
 
-	info = (t_info *)state_v;
+	info = (t_info *)arg;
 	total = 0;
 	while (total < info->nbr_eat)
 	{
@@ -67,7 +67,7 @@ void	*routine(void *philo_v)
 	{
 		take_forks(philo);
 		eat(philo);
-		clean_forks(philo);
+		reset_forks(philo);
 		display_message(philo, THINK);
 	}
 	return ((void *)0);

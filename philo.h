@@ -6,7 +6,7 @@
 /*   By: ldevilla <ldevilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 10:43:33 by ldevilla          #+#    #+#             */
-/*   Updated: 2021/06/10 10:52:12 by ldevilla         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:19:05 by ldevilla         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <stdbool.h>
 
 # define EAT	0
 # define SLEEP	1
@@ -66,7 +67,7 @@ void		free_all(t_info *info);
 int			init(t_info *info, int ac, char const **av);
 //SIMULATION
 void		take_forks(t_philo *philo);
-void		clean_forks(t_philo *philo);
+void		reset_forks(t_philo *philo);
 void		eat(t_philo *philo);
 void		display_message(t_philo *philo, int type);
 //THREADS
@@ -74,6 +75,5 @@ void		*eat_counter(void *state_v);
 void		*check_died(void *philo_v);
 void		*routine(void *philo_v);
 int			launch_threads(t_info *info);
-
 
 #endif

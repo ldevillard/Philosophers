@@ -6,7 +6,7 @@
 /*   By: ldevilla <ldevilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 09:56:55 by ldevilla          #+#    #+#             */
-/*   Updated: 2021/06/10 10:49:51 by ldevilla         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:18:59 by ldevilla         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char const **av)
 	}
 	if (init(&info, ac, av))
 	{
-		free_all(&info);
 		write(2, "Error while parsing\n", 21);
 		return (2);
 	}
